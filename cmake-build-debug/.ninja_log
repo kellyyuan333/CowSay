@@ -1,0 +1,13 @@
+# ninja log v5
+15	471	6879017054388341	CMakeFiles/Lab7.dir/Dragon.cpp.obj	13a1c829e1b617bf
+22	475	6879017054418348	CMakeFiles/Lab7.dir/IceDragon.cpp.obj	9a7b43791a822fd3
+29	478	6879017054449555	CMakeFiles/Lab7.dir/Cow.cpp.obj	2233eba70a255a3
+1	624	6879017055902056	CMakeFiles/Lab7.dir/cowsay.cpp.obj	ad119c8813f7ba86
+5	596	6879018449510107	CMakeFiles/Lab7.dir/cowsay.cpp.obj	ad119c8813f7ba86
+3	577	6879022060344474	CMakeFiles/Lab7.dir/cowsay.cpp.obj	ad119c8813f7ba86
+16	718	6879025481592254	CMakeFiles/Lab7.dir/Dragon.cpp.obj	13a1c829e1b617bf
+3	570	6879027751242667	CMakeFiles/Lab7.dir/cowsay.cpp.obj	ad119c8813f7ba86
+15	534	6879041603599695	CMakeFiles/Lab7.dir/Dragon.cpp.obj	13a1c829e1b617bf
+24	536	6879041603599695	CMakeFiles/Lab7.dir/IceDragon.cpp.obj	9a7b43791a822fd3
+3	729	6879041605533942	CMakeFiles/Lab7.dir/cowsay.cpp.obj	ad119c8813f7ba86
+729	885	6879041607053192	Lab7.exe	b38f23363daeedec
