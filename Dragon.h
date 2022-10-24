@@ -1,10 +1,11 @@
 //
-// Created by andyc on 10/19/2022.
+// Created by Kelly on 10/23/2022.
 //
 
-#ifndef LAB7_DRAGON_H
-#define LAB7_DRAGON_H
+#ifndef UNTITLED3_DRAGON_H
+#define UNTITLED3_DRAGON_H
 #include "Cow.h"
+
 
 class Dragon : public Cow
 {
@@ -17,5 +18,4 @@ public:
     bool canBreatheFire();
 };
 
-
-#endif //LAB7_DRAGON_H
+#endif //UNTITLED3_DRAGON_H
