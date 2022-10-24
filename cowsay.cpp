@@ -3,85 +3,105 @@
 #include "Cow.h"
 #include "Dragon.h"
 #include "IceDragon.h"
-#include "HeiferGenerator.cpp"
+#include "HeiferGenerator.h"
 
 using namespace std;
 
 int main(int argc, const char** argv)
 {
     HeiferGenerator gen;
-
     string message;
-    if(argv[1] == "-l")
+    message = argv[1];
+    if(message == "-l")
     {
-        //list out cows
-
+        //lists out cows
         cout << "Cows Available: ";
-
-        for(Cow* currentCow: gen.getCows())
+        for(Cow* currentCow : gen.getCows())
         {
             cout << currentCow->getName() << " ";
         }
+        cout << endl;
     }
-    else if(argv[1] == "-n")
+    else if(message == "-n")
     {
-        //assign next argument to message
-        for (int i = 3; i < argc; i++)
+        string cowName = argv[2];
+        Cow calledCow = Cow(cowName);
+        bool found = false;
+        for(Cow* currentCow : gen.getCows())
+        {
+            if (currentCow->getName() == calledCow.getName()) //checks if the called cow is in the list
+            {
+                found = true;
+                cout << endl;
+                //prints message
+                for (int i = 3; i < argc; i++)
+                {
+                    message = argv[i];
+                    if (i < argc - 1)
+                    {
+                        cout << message << " ";
+                    }
+                    else if (i = argc - 1)
+                    {
+                        cout << message << endl;
+                    }
+                }
+                //prints cow image
+                for(Cow* currentCow : gen.getCows())
+                {
+                    if (currentCow->getName() == calledCow.getName())
+                    cout << currentCow->getImage() << endl;
+                }
+                //prints dragon image and checks if can breathe fire
+                Dragon* testDragon = gen.getDragonPointer(currentCow);
+                if(testDragon!= nullptr)
+                {
+                    Dragon dragon = Dragon(testDragon->name, testDragon->image);
+                    if(typeid(Dragon) == typeid(*testDragon))
+                    {
+                        cout << testDragon->image <<endl;
+                        cout << "This dragon can breathe fire." << endl;
+                    }
+                    if(typeid(IceDragon) == typeid(*testDragon))
+                    {
+                        IceDragon ice = IceDragon(testDragon->name, testDragon->image);
+                        cout << testDragon->image << endl;
+                        if (!ice.canBreatheFire())
+                            cout << "This dragon cannot breathe fire." << endl;
+                    }
+                }
+                break;
+            }
+        }
+        if (!found)
+        {
+            cout << "Could not find " << calledCow.getName() << " cow!" << endl;
+            cout << endl;
+        }
+    }
+    else
+    {
+        cout << endl;
+        Cow calledCow = Cow("heifer");
+        //prints message
+        for (int i = 1; i < argc; i++)
         {
             message = argv[i];
             if (i < argc - 1)
             {
-                cout << message;
+                cout << message << " ";
             }
             else if (i = argc - 1)
             {
                 cout << message << endl;
             }
         }
-        Cow calledCow = Cow(argv[2]);
-
-        try
+        //prints default cow image
+        for(Cow* currentCow : gen.getCows())
         {
-            for (Cow *currentCow: gen.getCows())
-            {
-                if (currentCow->getName() == argv[2])
-                {
-                    if(argv[2] == "dragon")
-                    {
-                        Dragon calledDragon = Dragon(argv[2],calledCow.getImage());
-                        cout << calledDragon.getImage() << endl;
-                        cout << endl;
-                        cout << "This dragon can breathe fire." << endl;
-                        cout << endl;
-                    }
-                    else if(argv[2] == "ice-dragon")
-                    {
-                        IceDragon calledDragon = IceDragon(argv[2], calledCow.getImage());
-                        cout << calledDragon.getImage() << endl;
-                        cout << endl;
-                        cout << "This dragon cannot breathe fire." << endl;
-                        cout << endl;
-                    }
-                    else
-                    {
-                        calledCow = *currentCow;
-                        cout << calledCow.getImage() << endl;
-                    }
-                }
-            }
+            cout << currentCow->getImage() << endl;
             cout << endl;
-        }
-        catch (...)
-        {
-            cout << "Could not find " << argv[2] << " cow!" << endl;
-        }
-    }
-    else
-    {
-        for (int i = 1; i < argc; i++)
-        {
-            message = argv[i];
-            cout << message;
+            break;
         }
     }
 }
